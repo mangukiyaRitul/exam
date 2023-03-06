@@ -22,6 +22,7 @@ class _examState extends State<exam> {
   Color c1 = Colors.white;
   TextEditingController num1 = new TextEditingController();
   TextEditingController num2 = new TextEditingController();
+  String c2="";
   @override
   Widget build(BuildContext context) {
 
@@ -65,57 +66,73 @@ class _examState extends State<exam> {
                   ),
                 ),
 
-                ElevatedButton(onPressed: (){
+                Container(
+                  margin: EdgeInsets.all(10),
 
-                  setState(() {
-                    sum = int.parse(num1.text) + int.parse(num2.text);
-                     if(sum>=10 && sum<20 )
+                  child: ElevatedButton(onPressed: (){
+
+                    setState(() {
+                      sum = int.parse(num1.text) + int.parse(num2.text);
+                       if( sum<20 )
+                         {
+                           c1=Colors.red;
+                           c2="red";
+                         }
+                       else if(sum>=20 && sum<30)
                        {
-                         c1=Colors.red;
+                         c1=Colors.blue;
+                         c2="blue";
                        }
-                     else if(sum>=20 && sum<30)
-                     {
-                       c1=Colors.blue;
-                     }
-                     else if(sum>=30 && sum<40 )
-                     {
-                       c1=Colors.green;
-                     }
-                     else if(sum>=40 && sum<50)
-                     {
-                       c1=Colors.deepOrange;
-                     }
-                     else if(sum>=50 && sum<60)
-                     {
-                       c1=Colors.teal;
-                     }
-                     else if(sum>=60 && sum<70)
-                     {
-                       c1=Colors.purple;
-                     }
-                     else if(sum>=70 && sum<80)
-                     {
-                       c1=Colors.black87;
-                     }
-                     else if(sum>=80 && sum<90)
-                     {
-                       c1=Colors.grey;
-                     }
-                      // result = sum.toString();
+                       else if(sum>=30 && sum<40 )
+                       {
+                         c1=Colors.green;
+                         c2="green";
+                       }
+                       else if(sum>=40 && sum<50)
+                       {
+                         c1=Colors.deepOrange;
+                         c2="deepOrange";
+                       }
+                       else if(sum>=50 && sum<60)
+                       {
+                         c1=Colors.teal;
+                         c2="teal";
+                       }
+                       else if(sum>=60 && sum<70)
+                       {
+                         c1=Colors.purple;
+                         c2="purple";
+                       }
+                       else if(sum>=70 && sum<80)
+                       {
+                         c1=Colors.black87;
+                         c2="black";
+                       }
+                       else if(sum>=80)
+                       {
+                         c1=Colors.grey;
+                         c2="grey";
+                       }
+                        // result = sum.toString();
 
-                  });
-                }, child: Text("sum",style: TextStyle(fontSize: 20),)),
+                    });
+                  }, child: Text("sum",style: TextStyle(fontSize: 20),)),
+                ),
 
 
               Container(
+                margin: EdgeInsets.all(10),
                 height:30 ,
-                width: 30,
+                width: 50,
                 child:  Text("$sum",style: TextStyle(fontSize: 25)),
               ),
                 Container(
+                  margin: EdgeInsets.all(10),
+                alignment: Alignment.center,
                   height: 40,
                   width: 200,
                   color: c1,
+                  child: Text("$c2"),
                 ),
 
               ],
